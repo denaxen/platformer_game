@@ -6,6 +6,8 @@ CMakeFiles/editor.dir/src/editor.cpp.o
  /home/denaxen/workspace/seminars/project/platformer_game/src/editor.cpp
  /home/denaxen/workspace/seminars/project/platformer_game/src/player.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/player_states.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/tiles.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/tileworld.h
 CMakeFiles/editor.dir/src/player.cpp.o
@@ -19,4 +21,20 @@ CMakeFiles/editor.dir/src/player_states.cpp.o
  /home/denaxen/workspace/seminars/project/platformer_game/src/player.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/player_states.cpp
  /home/denaxen/workspace/seminars/project/platformer_game/src/player_states.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/tiles.h
+CMakeFiles/editor.dir/src/skeleton.cpp.o
+ /home/denaxen/workspace/seminars/project/platformer_game/src/animation.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/player.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/player_states.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.cpp
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/tiles.h
+CMakeFiles/editor.dir/src/skeleton_states.cpp.o
+ /home/denaxen/workspace/seminars/project/platformer_game/src/animation.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/player.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/player_states.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.cpp
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/tiles.h

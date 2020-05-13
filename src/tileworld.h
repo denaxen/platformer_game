@@ -18,7 +18,7 @@
 
 #include "tiles.h"
 
-
+using namespace std;
 
 
 class TileWorld
@@ -225,6 +225,9 @@ public:
 		player.update(dt);
 		skeleton.update(dt);
 		player.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
+        skeleton.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
+
+		cout << player.get_position().x << " " << player.get_position().y << " " << skeleton.get_position().x << " " << skeleton.get_position().y << endl;
 	}
 
 	void draw_single_tile(sf::RenderWindow& window, Tile tile, sf::Vector2f position)
@@ -261,6 +264,7 @@ public:
 			}
 		
 		player.draw(window);
+			skeleton.draw(window);
 	}
 
 	void handle_events(const sf::RenderWindow& window, const sf::Event& event)

@@ -67,12 +67,12 @@ void skeletonRunning::update(Skeleton* skeleton, float dt)
     animation.update(dt);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
-        skeleton->velocity.x = -running_speed;
+        //skeleton->velocity.x = -running_speed;
         skeleton->is_faced_right = false;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
-        skeleton->velocity.x = running_speed;
+        //skeleton->velocity.x = running_speed;
         skeleton->is_faced_right = true;
     }
 }

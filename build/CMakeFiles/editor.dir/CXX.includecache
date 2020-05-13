@@ -38,6 +38,26 @@ animation.h
 player.h
 /home/denaxen/workspace/seminars/project/platformer_game/src/player.h
 
+/home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.h
+SFML/Window.hpp
+-
+SFML/Graphics.hpp
+-
+player_states.h
+/home/denaxen/workspace/seminars/project/platformer_game/src/player_states.h
+tiles.h
+/home/denaxen/workspace/seminars/project/platformer_game/src/tiles.h
+
+/home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.h
+SFML/Window.hpp
+-
+SFML/Graphics.hpp
+-
+animation.h
+/home/denaxen/workspace/seminars/project/platformer_game/src/animation.h
+skeleton.h
+/home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.h
+
 /home/denaxen/workspace/seminars/project/platformer_game/src/tiles.h
 
 /home/denaxen/workspace/seminars/project/platformer_game/src/tileworld.h
@@ -63,6 +83,10 @@ player.h
 /home/denaxen/workspace/seminars/project/platformer_game/src/player.h
 player_states.h
 /home/denaxen/workspace/seminars/project/platformer_game/src/player_states.h
+skeleton.h
+/home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.h
+skeleton_states.h
+/home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.h
 tiles.h
 /home/denaxen/workspace/seminars/project/platformer_game/src/tiles.h
 

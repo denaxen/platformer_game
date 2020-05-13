@@ -17,7 +17,6 @@ public:
 	sf::Vector2i get_size();
 	void set_sprite(sf::Sprite& sprite, bool is_faced_right);
 
-	virtual void handle_events(Skeleton* skeleton, const sf::Event& event);
 	virtual void update(Skeleton* skeleton, float dt);
 
 	virtual void attacking(Skeleton* skeleton) = 0;
@@ -31,7 +30,6 @@ public:
 	skeletonIdle(Skeleton* skeleton);
 	
 	void update(Skeleton* skeleton, float dt);
-	void handle_events(Skeleton* skeleton, const sf::Event& event);
 	void attacking(Skeleton* skeleton);
 };
 
@@ -43,7 +41,6 @@ public:
 	skeletonRunning(Skeleton* skeleton);
 
 	void update(Skeleton* skeleton, float dt);
-	void handle_events(Skeleton* skeleton, const sf::Event& event);
 	void attacking(Skeleton* skeleton);
 };
 
