@@ -13,8 +13,8 @@
 #include "player.h"
 #include "player_states.h"
 
-#include "skeleton.h"
-#include "skeleton_states.h"
+//#include "skeleton.h"
+//#include "skeleton_states.h"
 
 #include "tiles.h"
 
@@ -42,7 +42,7 @@ private:
 
 	Player player;
 
-	Skeleton skeleton;
+	//Skeleton skeleton;
 
 	sf::Sprite tile_sprite;
 
@@ -61,7 +61,7 @@ public:
 
 	TileWorld(unsigned int num_tiles_x, unsigned int num_tiles_y, bool is_editor_mode) 
 		: num_tiles_x(num_tiles_x), num_tiles_y(num_tiles_y), is_editor_mode(is_editor_mode),
-		  player(Player({0, 0})), view(sf::FloatRect(0, 0, 1200, 900)), time(0), skeleton(Skeleton({0, 0}))
+		  player(Player({0, 0})), view(sf::FloatRect(0, 0, 1200, 900)), time(0)
 	{
 
 		background_textures.resize(4);
@@ -86,6 +86,7 @@ public:
 		tile_sprite.setTexture(tileset_texture);
 		scale_factor = 5;
 		tile_sprite.setScale(scale_factor, scale_factor);
+
 
 
 		tile_texture_coords = {
@@ -120,7 +121,64 @@ public:
 			{Tile::BridgeStart, {96, 64, 16, 16}},  
 			{Tile::BridgeFinish, {128, 64, 16, 16}},
 			{Tile::CaveCenter, {16, 64, 16, 16}},
-			{Tile::CaveLeft, {0, 64, 16, 16}}
+			{Tile::CaveLeft, {0, 64, 16, 16}},
+
+			//{Tile::Tree1_1, {160, 0, 16, 16}},
+			{Tile::Tree1_2, {160, 16, 16, 16}},
+			{Tile::Tree1_3, {160, 32, 16, 16}},
+			{Tile::Tree1_4, {160, 48, 16, 16}},
+			//{Tile::Tree1_5, {160, 64, 16, 16}},
+			{Tile::Tree1_6, {176, 0, 16, 16}},
+			{Tile::Tree1_7, {176, 16, 16, 16}},
+			{Tile::Tree1_8, {176, 32, 16, 16}},
+			{Tile::Tree1_9, {176, 48, 16, 16}},
+			{Tile::Tree1_10, {176, 64, 16, 16}},
+			{Tile::Tree1_11, {192, 0, 16, 16}},
+			{Tile::Tree1_12, {192, 16, 16, 16}},
+			{Tile::Tree1_13, {192, 32, 16, 16}},
+			{Tile::Tree1_14, {192, 48, 16, 16}},
+			{Tile::Tree1_15, {192, 64, 16, 16}},
+			{Tile::Tree1_16, {208, 0, 16, 16}},
+			{Tile::Tree1_17, {208, 16, 16, 16}},
+			{Tile::Tree1_18, {208, 32, 16, 16}},
+			{Tile::Tree1_19, {208, 48, 16, 16}},
+			{Tile::Tree1_20, {208, 64, 16, 16}},
+
+			//{Tile::Tree2_1, {224, 0, 16, 16}},
+			{Tile::Tree2_2, {224, 16, 16, 16}},
+			{Tile::Tree2_3, {224, 32, 16, 16}},
+			{Tile::Tree2_4, {224, 48, 16, 16}},
+			//{Tile::Tree2_5, {224, 64, 16, 16}},
+			//{Tile::Tree2_6, {224, 80, 16, 16}},
+			//{Tile::Tree2_7, {224, 96, 16, 16}},
+			{Tile::Tree2_8, {240, 0, 16, 16}},
+			{Tile::Tree2_9, {240, 16, 16, 16}},
+			{Tile::Tree2_10, {240, 32, 16, 16}},
+			{Tile::Tree2_11, {240, 48, 16, 16}},
+			{Tile::Tree2_12, {240, 64, 16, 16}},
+			{Tile::Tree2_13, {240, 80, 16, 16}},
+			{Tile::Tree2_14, {240, 96, 16, 16}},
+			{Tile::Tree2_15, {256, 0, 16, 16}},
+			{Tile::Tree2_16, {256, 16, 16, 16}},
+			{Tile::Tree2_17, {256, 32, 16, 16}},
+			{Tile::Tree2_18, {256, 48, 16, 16}},
+			{Tile::Tree2_19, {256, 64, 16, 16}},
+			{Tile::Tree2_20, {256, 80, 16, 16}},
+			{Tile::Tree2_21, {256, 96, 16, 16}},
+			{Tile::Tree2_22, {272, 0, 16, 16}},
+			{Tile::Tree2_23, {272, 16, 16, 16}},
+			{Tile::Tree2_24, {272, 32, 16, 16}},
+			{Tile::Tree2_25, {272, 48, 16, 16}},
+			//{Tile::Tree2_26, {272, 64, 16, 16}},
+			//{Tile::Tree2_27, {272, 80, 16, 16}},
+			//{Tile::Tree2_28, {272, 96, 16, 16}},
+			//{Tile::Tree2_29, {288, 0, 16, 16}},
+			{Tile::Tree2_30, {288, 16, 16, 16}},
+			{Tile::Tree2_31, {288, 32, 16, 16}},
+			{Tile::Tree2_32, {288, 48, 16, 16}}
+			//{Tile::Tree2_33, {288, 64, 16, 16}},
+			//{Tile::Tree2_34, {288, 80, 16, 16}},
+			//{Tile::Tree2_35, {288, 96, 16, 16}}
 		};
 
 		tilegrid.resize(num_tiles_x * num_tiles_y);
@@ -223,7 +281,6 @@ public:
 		set_view();
 		update_backgrounds();
 		player.update(dt);
-		skeleton.update(dt);
 		player.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
 	}
 
@@ -296,7 +353,6 @@ public:
 		}
 
 		savefile << "Player " << player.get_position().x << " " << player.get_position().y << std::endl;
-        savefile << "Skeleton " << skeleton.get_position().x << " " << skeleton.get_position().y << std::endl;
 		savefile.close();
 
 	}
@@ -331,8 +387,6 @@ public:
 		sf::Vector2f temp_position;
 		loadfile >> temp_position.x >> temp_position.y;
 		player.set_position(temp_position);
-        loadfile >> temp_position.x >> temp_position.y;
-        skeleton.set_position(temp_position);
 		loadfile.close();
 	}
 };
