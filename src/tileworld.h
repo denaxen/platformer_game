@@ -13,8 +13,8 @@
 #include "player.h"
 #include "player_states.h"
 
-//#include "skeleton.h"
-//#include "skeleton_states.h"
+#include "skeleton.h"
+#include "skeleton_states.h"
 
 #include "tiles.h"
 
@@ -42,7 +42,7 @@ private:
 
 	Player player;
 
-	//Skeleton skeleton;
+	Skeleton skeleton;
 
 	sf::Sprite tile_sprite;
 
@@ -61,7 +61,7 @@ public:
 
 	TileWorld(unsigned int num_tiles_x, unsigned int num_tiles_y, bool is_editor_mode) 
 		: num_tiles_x(num_tiles_x), num_tiles_y(num_tiles_y), is_editor_mode(is_editor_mode),
-		  player(Player({0, 0})), view(sf::FloatRect(0, 0, 1200, 900)), time(0)
+		  player(Player({0, 0})), view(sf::FloatRect(0, 0, 1200, 900)), time(0), skeleton(Skeleton({0, 0}))
 	{
 
 		background_textures.resize(4);
@@ -281,6 +281,7 @@ public:
 		set_view();
 		update_backgrounds();
 		player.update(dt);
+		skeleton.update(dt);
 		player.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
         skeleton.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
 
@@ -321,7 +322,7 @@ public:
 			}
 		
 		player.draw(window);
-			skeleton.draw(window);
+		skeleton.draw(window);
 	}
 
 	void handle_events(const sf::RenderWindow& window, const sf::Event& event)
@@ -357,6 +358,7 @@ public:
 		}
 
 		savefile << "Player " << player.get_position().x << " " << player.get_position().y << std::endl;
+		savefile << "Skeleton " << skeleton.get_position().x << " " << skeleton.get_position().y << std::endl;
 		savefile.close();
 
 	}
@@ -391,6 +393,8 @@ public:
 		sf::Vector2f temp_position;
 		loadfile >> temp_position.x >> temp_position.y;
 		player.set_position(temp_position);
+		loadfile >> temp_position.x >> temp_position.y;	
+        skeleton.set_position(temp_position);
 		loadfile.close();
 	}
 };
