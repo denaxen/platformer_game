@@ -285,7 +285,7 @@ public:
 		player.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
         skeleton.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
 
-		//cout << player.get_position().x << " " << player.get_position().y << " " << skeleton.get_position().x << " " << skeleton.get_position().y << endl;
+		cout << player.get_position().x << " " << player.get_position().y << " " << skeleton.get_position().x << " " << skeleton.get_position().y << endl;
 	}
 
 	void draw_single_tile(sf::RenderWindow& window, Tile tile, sf::Vector2f position)
@@ -393,6 +393,7 @@ public:
 		sf::Vector2f temp_position;
 		loadfile >> temp_position.x >> temp_position.y;
 		player.set_position(temp_position);
+		loadfile >> temp_name;
 		loadfile >> temp_position.x >> temp_position.y;	
         skeleton.set_position(temp_position);
 		loadfile.close();
