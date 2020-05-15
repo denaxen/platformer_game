@@ -21,9 +21,9 @@ public:
 
 	virtual void update(Skeleton* skeleton, float dt);
 
-	virtual void attacking(Skeleton* skeleton) = 0;
 	virtual ~SkeletonState();
 	friend class Pursue;
+	
 };
 
 class skeletonIdle : public SkeletonState
@@ -32,7 +32,6 @@ public:
 	skeletonIdle(Skeleton* skeleton);
 	
 	void update(Skeleton* skeleton, float dt);
-	void attacking(Skeleton* skeleton);
 };
 
 class skeletonRunning : public SkeletonState
@@ -41,6 +40,12 @@ public:
 	skeletonRunning(Skeleton* skeleton);
 
 	void update(Skeleton* skeleton, float dt);
-	void attacking(Skeleton* skeleton);
 };
 
+class skeletonAttack : public SkeletonState
+{
+public:
+	skeletonAttack(Skeleton* skeleton);
+
+	void update(Skeleton* skeleton, float dt);
+};

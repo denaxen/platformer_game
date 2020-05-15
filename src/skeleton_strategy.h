@@ -39,3 +39,11 @@ public:
 
     void update(Skeleton* skeleton, Player& player, float dt);
 };
+
+class Attacking : public SkeletonStrategy
+{
+public:
+    Attacking(Skeleton* skeleton);
+
+    void update(Skeleton* skeleton, Player& player, float dt);
+};

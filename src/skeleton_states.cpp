@@ -26,18 +26,13 @@ void SkeletonState::set_sprite(sf::Sprite& sprite, bool is_faced_right)
 SkeletonState::~SkeletonState() {};
 
 
-
-
 skeletonIdle::skeletonIdle(Skeleton* skeleton) : SkeletonState()
 {
     skeleton->velocity = {0, 0};
-    animation = Animation({0, 0, 24, 32}, 11, 12);
+    animation = Animation({1, 1, 24, 42}, 11, 12);
     cout << "Creating skeletonIdle state" << endl;
 }
 
-void skeletonIdle::attacking(Skeleton* skeleton)
-{
-}
 
 void skeletonIdle::update(Skeleton* skeleton, float dt)
 {
@@ -48,16 +43,24 @@ float SkeletonState::running_speed = 200;
 
 skeletonRunning::skeletonRunning(Skeleton* skeleton) : SkeletonState()
 {
-    animation = Animation({0, 40, 22, 33}, 11, 12);
+    animation = Animation({0, 43, 22, 42}, 11, 12);
     cout << "Creating skeletonRunning state" << endl;
 }
 
 
-void skeletonRunning::attacking(Skeleton* skeleton)
+void skeletonRunning::update(Skeleton* skeleton, float dt)
 {
+    animation.update(dt);
 }
 
-void skeletonRunning::update(Skeleton* skeleton, float dt)
+skeletonAttack::skeletonAttack(Skeleton* skeleton) : SkeletonState()
+{
+    animation = Animation({0, 167, 43, 42}, 18, 17);
+    cout << "Creating skeletonAttack state" << endl;
+}
+
+
+void skeletonAttack::update(Skeleton* skeleton, float dt)
 {
     animation.update(dt);
 }

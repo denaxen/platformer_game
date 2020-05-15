@@ -35,7 +35,7 @@ Skeleton::Skeleton(sf::Vector2f position)
     scale_factor = 3;
     sprite.setScale(scale_factor, scale_factor);
     state = new skeletonIdle(this);
-    strategy = new Wait(this);
+    strategy = new Pursue(this);
     
 }
 

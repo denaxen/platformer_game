@@ -44,7 +44,9 @@ public:
 	friend class SkeletonState;
 	friend class skeletonIdle;
 	friend class skeletonRunning;
+	friend class skeletonAttack;
 	friend class SkeletonStrategy;
 	friend class Wait;
 	friend class Pursue;
+	friend class Attacking;
 };

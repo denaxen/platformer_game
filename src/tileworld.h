@@ -61,7 +61,7 @@ public:
 
 	TileWorld(unsigned int num_tiles_x, unsigned int num_tiles_y, bool is_editor_mode) 
 		: num_tiles_x(num_tiles_x), num_tiles_y(num_tiles_y), is_editor_mode(is_editor_mode),
-		  player(Player({0, 0})), view(sf::FloatRect(0, 0, 1200, 900)), time(0), skeleton(Skeleton({0, 0}))
+		  player(Player({0, 0})), view(sf::FloatRect(0, 0, 1200, 900)), time(0), skeleton(Skeleton({100, 0}))
 	{
 
 		background_textures.resize(4);

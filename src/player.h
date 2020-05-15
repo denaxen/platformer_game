@@ -50,4 +50,5 @@ public:
 	friend class SkeletonStrategy;
 	friend class Wait;
 	friend class Pursue;
+	friend class Attacking;
 };
