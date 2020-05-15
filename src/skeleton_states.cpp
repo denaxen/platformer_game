@@ -31,7 +31,7 @@ SkeletonState::~SkeletonState() {};
 skeletonIdle::skeletonIdle(Skeleton* skeleton) : SkeletonState()
 {
     skeleton->velocity = {0, 0};
-    animation = Animation({4, 0, 19, 34}, 12, 12);
+    animation = Animation({0, 0, 24, 32}, 11, 12);
     cout << "Creating skeletonIdle state" << endl;
 }
 
@@ -42,18 +42,13 @@ void skeletonIdle::attacking(Skeleton* skeleton)
 void skeletonIdle::update(Skeleton* skeleton, float dt)
 {
     animation.update(dt);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-    {
-        skeleton->set_state(new skeletonRunning(skeleton));
-        return;
-    }
 }
 
 float skeletonRunning::running_speed = 400;
 
 skeletonRunning::skeletonRunning(Skeleton* skeleton) : SkeletonState()
 {
-    animation = Animation({0, 64, 21, 34}, 8, 12);
+    animation = Animation({0, 40, 22, 33}, 11, 12);
     cout << "Creating skeletonRunning state" << endl;
 }
 
@@ -65,14 +60,4 @@ void skeletonRunning::attacking(Skeleton* skeleton)
 void skeletonRunning::update(Skeleton* skeleton, float dt)
 {
     animation.update(dt);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-    {
-        //skeleton->velocity.x = -running_speed;
-        skeleton->is_faced_right = false;
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-    {
-        //skeleton->velocity.x = running_speed;
-        skeleton->is_faced_right = true;
-    }
 }

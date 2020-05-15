@@ -310,6 +310,36 @@ src/skeleton_states.cpp.s:
 	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/src/skeleton_states.cpp.s
 .PHONY : src/skeleton_states.cpp.s
 
+src/skeleton_strategy.o: src/skeleton_strategy.cpp.o
+
+.PHONY : src/skeleton_strategy.o
+
+# target to build an object file
+src/skeleton_strategy.cpp.o:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/skeleton_strategy.cpp.o
+	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/src/skeleton_strategy.cpp.o
+.PHONY : src/skeleton_strategy.cpp.o
+
+src/skeleton_strategy.i: src/skeleton_strategy.cpp.i
+
+.PHONY : src/skeleton_strategy.i
+
+# target to preprocess a source file
+src/skeleton_strategy.cpp.i:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/skeleton_strategy.cpp.i
+	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/src/skeleton_strategy.cpp.i
+.PHONY : src/skeleton_strategy.cpp.i
+
+src/skeleton_strategy.s: src/skeleton_strategy.cpp.s
+
+.PHONY : src/skeleton_strategy.s
+
+# target to generate assembly for a file
+src/skeleton_strategy.cpp.s:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/skeleton_strategy.cpp.s
+	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/src/skeleton_strategy.cpp.s
+.PHONY : src/skeleton_strategy.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -338,6 +368,9 @@ help:
 	@echo "... src/skeleton_states.o"
 	@echo "... src/skeleton_states.i"
 	@echo "... src/skeleton_states.s"
+	@echo "... src/skeleton_strategy.o"
+	@echo "... src/skeleton_strategy.i"
+	@echo "... src/skeleton_strategy.s"
 .PHONY : help
 
 

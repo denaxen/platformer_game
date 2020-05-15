@@ -7,6 +7,7 @@ CMakeFiles/editor.dir/src/editor.cpp.o: ../src/player.h
 CMakeFiles/editor.dir/src/editor.cpp.o: ../src/player_states.h
 CMakeFiles/editor.dir/src/editor.cpp.o: ../src/skeleton.h
 CMakeFiles/editor.dir/src/editor.cpp.o: ../src/skeleton_states.h
+CMakeFiles/editor.dir/src/editor.cpp.o: ../src/skeleton_strategy.h
 CMakeFiles/editor.dir/src/editor.cpp.o: ../src/tiles.h
 CMakeFiles/editor.dir/src/editor.cpp.o: ../src/tileworld.h
 
@@ -28,6 +29,7 @@ CMakeFiles/editor.dir/src/skeleton.cpp.o: ../src/player_states.h
 CMakeFiles/editor.dir/src/skeleton.cpp.o: ../src/skeleton.cpp
 CMakeFiles/editor.dir/src/skeleton.cpp.o: ../src/skeleton.h
 CMakeFiles/editor.dir/src/skeleton.cpp.o: ../src/skeleton_states.h
+CMakeFiles/editor.dir/src/skeleton.cpp.o: ../src/skeleton_strategy.h
 CMakeFiles/editor.dir/src/skeleton.cpp.o: ../src/tiles.h
 
 CMakeFiles/editor.dir/src/skeleton_states.cpp.o: ../src/animation.h
@@ -36,5 +38,15 @@ CMakeFiles/editor.dir/src/skeleton_states.cpp.o: ../src/player_states.h
 CMakeFiles/editor.dir/src/skeleton_states.cpp.o: ../src/skeleton.h
 CMakeFiles/editor.dir/src/skeleton_states.cpp.o: ../src/skeleton_states.cpp
 CMakeFiles/editor.dir/src/skeleton_states.cpp.o: ../src/skeleton_states.h
+CMakeFiles/editor.dir/src/skeleton_states.cpp.o: ../src/skeleton_strategy.h
 CMakeFiles/editor.dir/src/skeleton_states.cpp.o: ../src/tiles.h
+
+CMakeFiles/editor.dir/src/skeleton_strategy.cpp.o: ../src/animation.h
+CMakeFiles/editor.dir/src/skeleton_strategy.cpp.o: ../src/player.h
+CMakeFiles/editor.dir/src/skeleton_strategy.cpp.o: ../src/player_states.h
+CMakeFiles/editor.dir/src/skeleton_strategy.cpp.o: ../src/skeleton.h
+CMakeFiles/editor.dir/src/skeleton_strategy.cpp.o: ../src/skeleton_states.h
+CMakeFiles/editor.dir/src/skeleton_strategy.cpp.o: ../src/skeleton_strategy.cpp
+CMakeFiles/editor.dir/src/skeleton_strategy.cpp.o: ../src/skeleton_strategy.h
+CMakeFiles/editor.dir/src/skeleton_strategy.cpp.o: ../src/tiles.h
 

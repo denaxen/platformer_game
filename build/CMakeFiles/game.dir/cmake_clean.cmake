@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/game.dir/src/player_states.cpp.o"
   "CMakeFiles/game.dir/src/skeleton.cpp.o"
   "CMakeFiles/game.dir/src/skeleton_states.cpp.o"
+  "CMakeFiles/game.dir/src/skeleton_strategy.cpp.o"
   "game.pdb"
   "game"
 )

@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/denaxen/workspace/seminars/project/platformer_game/src/player_states.cpp" "/home/denaxen/workspace/seminars/project/platformer_game/build/CMakeFiles/editor.dir/src/player_states.cpp.o"
   "/home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.cpp" "/home/denaxen/workspace/seminars/project/platformer_game/build/CMakeFiles/editor.dir/src/skeleton.cpp.o"
   "/home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.cpp" "/home/denaxen/workspace/seminars/project/platformer_game/build/CMakeFiles/editor.dir/src/skeleton_states.cpp.o"
+  "/home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_strategy.cpp" "/home/denaxen/workspace/seminars/project/platformer_game/build/CMakeFiles/editor.dir/src/skeleton_strategy.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

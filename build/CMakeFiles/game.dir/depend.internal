@@ -8,6 +8,7 @@ CMakeFiles/game.dir/src/main.cpp.o
  /home/denaxen/workspace/seminars/project/platformer_game/src/player_states.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_strategy.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/tiles.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/tileworld.h
 CMakeFiles/game.dir/src/player.cpp.o
@@ -29,6 +30,7 @@ CMakeFiles/game.dir/src/skeleton.cpp.o
  /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.cpp
  /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_strategy.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/tiles.h
 CMakeFiles/game.dir/src/skeleton_states.cpp.o
  /home/denaxen/workspace/seminars/project/platformer_game/src/animation.h
@@ -37,4 +39,14 @@ CMakeFiles/game.dir/src/skeleton_states.cpp.o
  /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.cpp
  /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_strategy.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/tiles.h
+CMakeFiles/game.dir/src/skeleton_strategy.cpp.o
+ /home/denaxen/workspace/seminars/project/platformer_game/src/animation.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/player.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/player_states.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_states.h
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_strategy.cpp
+ /home/denaxen/workspace/seminars/project/platformer_game/src/skeleton_strategy.h
  /home/denaxen/workspace/seminars/project/platformer_game/src/tiles.h

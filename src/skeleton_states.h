@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "animation.h"
 #include "skeleton.h"
+#include "skeleton_strategy.h"
 
 class Skeleton;
 
@@ -20,7 +21,6 @@ public:
 	virtual void update(Skeleton* skeleton, float dt);
 
 	virtual void attacking(Skeleton* skeleton) = 0;
-    virtual void start_falling(Skeleton* skeleton) {}
 	virtual ~SkeletonState();
 };
 

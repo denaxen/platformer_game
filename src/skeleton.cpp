@@ -4,6 +4,7 @@
 #include <cmath>
 #include "skeleton.h"
 #include "skeleton_states.h"
+#include "skeleton_strategy.h"
 #include "tiles.h"
 
 
@@ -15,11 +16,17 @@ void Skeleton::set_state(SkeletonState* new_state)
     state = new_state;
 }
 
+void Skeleton::set_strategy(SkeletonStrategy* new_strategy)
+{
+    delete strategy;
+    strategy = new_strategy;
+}
+
 Skeleton::Skeleton(sf::Vector2f position)
 {
-    if (!texture.loadFromFile("../textures/hero.png"))
+    if (!texture.loadFromFile("../textures/skeleton.png"))
     {
-        std::cout << "Can't load image ./hero.png for Skeleton class" << std::endl;
+        std::cout << "Can't load image ./skeleton.png for Skeleton class" << std::endl;
         exit(1);
     }
     sprite.setTexture(texture);
@@ -28,6 +35,8 @@ Skeleton::Skeleton(sf::Vector2f position)
     scale_factor = 3;
     sprite.setScale(scale_factor, scale_factor);
     state = new skeletonIdle(this);
+    strategy = new Wait(this);
+    
 }
 
 sf::Vector2f Skeleton::get_center() const
@@ -46,9 +55,9 @@ void Skeleton::set_position(sf::Vector2f position)
 }
 
 
-void Skeleton::update(float dt)
+void Skeleton::update(Player& player, float dt)
 {
-    state->update(this, dt);
+    strategy->update(this, player, dt);
     sprite.move(velocity * dt);
 }
 
@@ -86,18 +95,10 @@ bool Skeleton::handle_collision(const sf::FloatRect& rect, bool is_hookable)
             case 0:
                 sprite.move({-overlapx1, 0});
                 velocity.x = 0;
-                if (is_hookable && velocity.y > 0 && player_rect.top < rect.top + Hooked::max_hook_offset
-                    && player_rect.top > rect.top - Hooked::max_hook_offset)
-                {
-                }
                 break;
             case 1:
                 sprite.move({overlapx2, 0});
                 velocity.x = 0;
-                if (is_hookable && velocity.y > 0 && player_rect.top < rect.top + Hooked::max_hook_offset
-                    && player_rect.top > rect.top - Hooked::max_hook_offset)
-                {
-                }
                 break;
             case 2:
                 sprite.move({0, -overlapy1});
@@ -142,11 +143,6 @@ void Skeleton::handle_all_collisions(sf::Vector2i tile_counts, sf::Vector2f tile
             }
         }
 
-    }
-
-    if (!is_colided)
-    {
-        state->start_falling(this);
     }
 }
 

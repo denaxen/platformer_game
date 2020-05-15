@@ -45,4 +45,7 @@ public:
 	friend class Falling;
 	friend class Sliding;
 	friend class Hooked;
+	friend class SkeletonStrategy;
+	friend class Wait;
+	friend class Pursue;
 };
