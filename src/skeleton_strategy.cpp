@@ -7,7 +7,9 @@
 #include "skeleton_states.h"
 #include "skeleton_strategy.h"
 
-const int pursue_dist = 500; //from this distantion skeleton will pursue hero
+const int max_pursue_dist = 1000; //until this distantion skeleton pursue hero
+const int min_pursue_dist = 100;   //from this distantion skeleton pursue hero
+const int stop_pursue_dist = 50; //from this distantion skeleton STOP pursue hero
 
 using namespace std;
 
@@ -28,16 +30,17 @@ SkeletonStrategy::~SkeletonStrategy() {};
 
 Wait::Wait(Skeleton* skeleton)
 {
-    skeleton->set_state(new skeletonIdle(skeleton));
     skeleton->velocity = {0, 0};
+    skeleton->set_state(new skeletonIdle(skeleton));
+   
     
 }
 
 void Wait::update(Skeleton* skeleton, Player& player, float dt)
 {
     skeleton->state->update(skeleton, dt);
-    if (abs(player.get_position().x - skeleton->get_position().x) <= pursue_dist && abs(player.get_position().x - skeleton->get_position().x) > 1 && 
-        abs(player.get_position().y - skeleton->get_position().y) == 0 && )
+    if (abs(player.get_position().x - skeleton->get_position().x) <= max_pursue_dist && 
+        abs(player.get_position().x - skeleton->get_position().x) >= min_pursue_dist && abs(player.get_position().y - skeleton->get_position().y) == 0)
     {
         skeleton->set_strategy(new Pursue(skeleton));
     }
@@ -50,26 +53,31 @@ Pursue::Pursue(Skeleton* skeleton)
 
 void Pursue::update(Skeleton* skeleton, Player& player, float dt)
 {
+    
+    
     skeleton->state->update(skeleton, dt);
-    if (abs(player.get_position().x - skeleton->get_position().x) > pursue_dist || abs(player.get_position().y - skeleton->get_position().y) != 0)
+    if (abs(player.get_position().x - skeleton->get_position().x) >= max_pursue_dist || 
+    abs(player.get_position().y - skeleton->get_position().y) >= 100 || abs(player.get_position().x - skeleton->get_position().x) < stop_pursue_dist) //stop purs
     {
         skeleton->set_strategy(new Wait(skeleton));
         return;
     }
-    if ((player.get_position() - skeleton->get_position()).x < -5)
+    /*if (abs((player.get_position() - skeleton->get_position()).x) < stop_pursue_dist)
     {
-        skeleton->velocity = {-100, 0};
+        skeleton->set_strategy(new Wait(skeleton));
+        return;
+    }*/
+    if ((player.get_position() - skeleton->get_position()).x < -1) //direction of running
+    {
+        skeleton->velocity = {-skeleton->state->running_speed, 0};
         skeleton->is_faced_right = false;
         return;
     }
-    if ((player.get_position().x - skeleton->get_position().x) > 5)
+    if ((player.get_position().x - skeleton->get_position().x) > 1) //direction of running
     {
-        skeleton->velocity = {100, 0};
+        skeleton->velocity = {skeleton->state->running_speed, 0};
         skeleton->is_faced_right = true;
         return;
     }
-    if ((player.get_position() - skeleton->get_position()).x < 1 && (player.get_position() - skeleton->get_position()).x > -1)
-    {
-        skeleton->set_strategy(new Wait(skeleton));
-    }
+    
 }

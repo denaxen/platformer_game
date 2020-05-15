@@ -44,7 +44,7 @@ void skeletonIdle::update(Skeleton* skeleton, float dt)
     animation.update(dt);
 }
 
-float skeletonRunning::running_speed = 400;
+float SkeletonState::running_speed = 200;
 
 skeletonRunning::skeletonRunning(Skeleton* skeleton) : SkeletonState()
 {

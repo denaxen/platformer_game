@@ -259,6 +259,7 @@ void Falling::start_falling(Player* player)
 void Falling::hit_ground(Player* player)
 {
 	player->set_state(new Idle(player));
+	player->on_ground = true;
 }
 
 
@@ -309,4 +310,5 @@ void Hooked::start_falling(Player* player)
 void Hooked::hit_ground(Player* player)
 {
 	player->set_state(new Idle(player));
+	player->on_ground = true;
 }

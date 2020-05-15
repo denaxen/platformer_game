@@ -16,6 +16,7 @@ private:
 	sf::Sprite sprite;
 
 	bool is_faced_right;
+	bool on_ground;
 	sf::Vector2f velocity;
 	float scale_factor;
 

@@ -1,0 +1,4 @@
+/home/denaxen/workspace/seminars/project/platformer_game/build/CMakeFiles/rebuild_cache.dir
+/home/denaxen/workspace/seminars/project/platformer_game/build/CMakeFiles/game.dir
+/home/denaxen/workspace/seminars/project/platformer_game/build/CMakeFiles/edit_cache.dir
+/home/denaxen/workspace/seminars/project/platformer_game/build/CMakeFiles/editor.dir

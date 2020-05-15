@@ -12,6 +12,7 @@ class SkeletonState
 {
 protected:
 	Animation animation;
+	static float running_speed;
 public:
 	SkeletonState();
 
@@ -22,6 +23,7 @@ public:
 
 	virtual void attacking(Skeleton* skeleton) = 0;
 	virtual ~SkeletonState();
+	friend class Pursue;
 };
 
 class skeletonIdle : public SkeletonState
@@ -35,8 +37,6 @@ public:
 
 class skeletonRunning : public SkeletonState
 {
-private:
-	static float running_speed;
 public:
 	skeletonRunning(Skeleton* skeleton);
 
