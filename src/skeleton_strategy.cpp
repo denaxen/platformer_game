@@ -7,7 +7,7 @@
 #include "skeleton_states.h"
 #include "skeleton_strategy.h"
 
-const int pursue_dist = 200; //from this distantion skeleton will pursue hero
+const int pursue_dist = 500; //from this distantion skeleton will pursue hero
 
 using namespace std;
 
@@ -36,7 +36,8 @@ Wait::Wait(Skeleton* skeleton)
 void Wait::update(Skeleton* skeleton, Player& player, float dt)
 {
     skeleton->state->update(skeleton, dt);
-    if (abs(player.get_position().x - skeleton->get_position().x) <= pursue_dist && abs(player.get_position().x - skeleton->get_position().x) > 1)
+    if (abs(player.get_position().x - skeleton->get_position().x) <= pursue_dist && abs(player.get_position().x - skeleton->get_position().x) > 1 && 
+        abs(player.get_position().y - skeleton->get_position().y) == 0 && )
     {
         skeleton->set_strategy(new Pursue(skeleton));
     }
@@ -50,7 +51,7 @@ Pursue::Pursue(Skeleton* skeleton)
 void Pursue::update(Skeleton* skeleton, Player& player, float dt)
 {
     skeleton->state->update(skeleton, dt);
-    if (abs(player.get_position().x - skeleton->get_position().x) > pursue_dist)
+    if (abs(player.get_position().x - skeleton->get_position().x) > pursue_dist || abs(player.get_position().y - skeleton->get_position().y) != 0)
     {
         skeleton->set_strategy(new Wait(skeleton));
         return;
@@ -71,5 +72,4 @@ void Pursue::update(Skeleton* skeleton, Player& player, float dt)
     {
         skeleton->set_strategy(new Wait(skeleton));
     }
-
 }

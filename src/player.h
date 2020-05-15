@@ -22,6 +22,7 @@ private:
 	const float jumping_velocity = 1260;
 	void set_state(PlayerState* new_state);
 
+
 public:
 	Player(sf::Vector2f position);
 
