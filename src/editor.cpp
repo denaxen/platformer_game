@@ -52,7 +52,7 @@ int main(int argc, char** argv)
 	tile_choosing_rectangle.setPosition({0, 0});
 	tile_choosing_rectangle.setFillColor(sf::Color::White);
 
-	world.load_from_file("../savefiles/default.lvl");
+	world.load_from_file("../savefiles/savefile.lvl");
 
 	while (window.isOpen()) 
 	{
@@ -87,7 +87,9 @@ int main(int argc, char** argv)
 				{
 					world.switch_camera_mode();
 				}
-				
+
+				tile_choosing_rectangle.setSize({(world.get_tile_world_size_for_rect_x(current_tile) + world.get_tile_world_size_for_rect_x(current_decoration_tile) + 6), 
+												 max(world.get_tile_world_size_for_rect_y(current_tile), world.get_tile_world_size_for_rect_y(current_decoration_tile))+ 5});
 
 				if (event.key.code == sf::Keyboard::F5)
 				{
@@ -136,7 +138,7 @@ int main(int argc, char** argv)
 		world.set_window_view(window);
 		window.draw(tile_choosing_rectangle);
 		world.draw_single_tile(window, current_tile, {0, 0});
-		world.draw_single_tile(window, current_decoration_tile, {world.get_tile_world_size(), 0});
+		world.draw_single_tile(window, current_decoration_tile, {world.get_tile_world_size_for_rect_x(current_tile) + 3, 0});
 		
 		if (enable_info)
 		{
@@ -147,6 +149,7 @@ int main(int argc, char** argv)
 
 		time += 1.0 / 60;
 	}
+	world.save_to_file("../savefiles/savefile.lvl");
 
 	return EXIT_SUCCESS;
 }
