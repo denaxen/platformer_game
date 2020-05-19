@@ -432,6 +432,7 @@ public:
 		sf::Vector2f temp_position;
 		loadfile >> temp_position.x >> temp_position.y;
 		player.set_position(temp_position);
+		loadfile >> temp_name;
 		loadfile >> temp_position.x >> temp_position.y;	
         skeleton.set_position(temp_position);
 		loadfile.close();
