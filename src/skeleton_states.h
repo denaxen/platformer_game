@@ -23,7 +23,8 @@ public:
 
 	virtual ~SkeletonState();
 	friend class Pursue;
-	
+	friend class Wait;
+	friend class Attacking;
 };
 
 class skeletonIdle : public SkeletonState

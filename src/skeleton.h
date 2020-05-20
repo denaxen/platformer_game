@@ -22,7 +22,8 @@ private:
 	sf::Vector2f velocity;
 	float scale_factor;
 
-	//const float jumping_velocity = 1260;
+	bool is_lose;
+
 	void set_state(SkeletonState* new_state);
 	void set_strategy(SkeletonStrategy* new_strategy);
 
@@ -49,4 +50,5 @@ public:
 	friend class Wait;
 	friend class Pursue;
 	friend class Attacking;
+	friend class TileWorld;
 };

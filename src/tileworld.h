@@ -9,6 +9,7 @@
 #include <string>
 #include <cmath>
 #include <cstdlib>
+#include <unistd.h>
 
 #include "player.h"
 #include "player_states.h"
@@ -43,11 +44,17 @@ private:
 
 	Player player;
 
+	sf::Font font;
+    sf::Text text;
+
 	Skeleton skeleton;
+	Skeleton skeleton1;
 
 	sf::Sprite tile_sprite;
 
 	sf::View view;
+
+	bool is_lose;
 
 	// Текстуры и спрайты для облаков и гор
 	std::vector<sf::Texture> background_textures;
@@ -70,9 +77,10 @@ public:
 
 	TileWorld(unsigned int num_tiles_x, unsigned int num_tiles_y, bool is_editor_mode) 
 		: num_tiles_x(num_tiles_x), num_tiles_y(num_tiles_y), is_editor_mode(is_editor_mode),
-		  player(Player({0, 0})), view(sf::FloatRect(0, 0, 1200, 900)), time(0), skeleton(Skeleton({0, 0}))
+		  player(Player({0, 0})), view(sf::FloatRect(0, 0, 1200, 900)), time(0), skeleton(Skeleton({0, 0})), skeleton1(Skeleton({0,0})), is_lose(false)
 	{
-
+		skeleton1.sprite.setColor({90, 90, 90});
+		//skeleton1.scale_factor = 4;
 		background_textures.resize(4);
         backgrounds.resize(4);
         background_textures[0].loadFromFile("../textures/background/CloudsBack.png");
@@ -158,7 +166,7 @@ public:
 		tilegrid.resize(num_tiles_x * num_tiles_y);
 	}
 
-
+	
 
 	int get_tile_size()
 	{
@@ -288,9 +296,12 @@ public:
 		set_view();
 		update_backgrounds();
 		player.update(dt);
+		is_lose = player.is_lose;
 		skeleton.update(player, dt);
+		skeleton1.update(player, dt);
 		player.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
         skeleton.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
+		skeleton1.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
 
 		//cout << player.get_position().x << " " << player.get_position().y << " " << skeleton.get_position().x << " " << skeleton.get_position().y << endl;
 	}
@@ -362,6 +373,38 @@ public:
 		
 		player.draw(window);
 		skeleton.draw(window);
+		skeleton1.draw(window);
+		
+		if (is_lose)
+		{
+			window.clear(sf::Color(200, 31, 47));
+    		/*if (!font.loadFromFile("../consolas.ttf"))
+        		std::cout << "Error, no font named consolas.ttf" << std::endl;
+			
+			text.setFont(font);
+    		text.setString("Game over");
+    		text.setCharacterSize(100);
+    		text.setOrigin(text.getLocalBounds().width / 2, text.getCharacterSize() / 2);
+    		text.setFillColor(sf::Color::White);
+    		text.setPosition(600, 350);
+    		window.draw(text);
+
+    		text.setString("Press esc to exit");
+    		text.setCharacterSize(100);
+    		text.setFont(font);
+    		text.setOrigin(text.getLocalBounds().width / 2, text.getCharacterSize() / 2);
+    		text.setFillColor(sf::Color::Blue);
+    		text.setPosition(600, 450);
+    		window.draw(text);*/
+			sleep(0.5);
+			cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+			cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\YOU DIED////////////////////////////" << endl;
+			cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Run game again//////////////////////////" << endl;
+			cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+			cout << "You see this message because program can't draw text on the window \n(method draw() in TileWorld, if(is_lose))" << endl;
+			exit(0);
+		}
+		
 	}
 
 	void handle_events(const sf::RenderWindow& window, const sf::Event& event)
@@ -398,6 +441,7 @@ public:
 
 		savefile << "Player " << player.get_position().x << " " << player.get_position().y << std::endl;
 		savefile << "Skeleton " << skeleton.get_position().x << " " << skeleton.get_position().y << std::endl;
+		savefile << "Skeleton1 " << skeleton1.get_position().x << " " << skeleton1.get_position().y << std::endl;
 		savefile.close();
 
 	}
@@ -435,6 +479,9 @@ public:
 		loadfile >> temp_name;
 		loadfile >> temp_position.x >> temp_position.y;	
         skeleton.set_position(temp_position);
+		loadfile >> temp_name;
+		loadfile >> temp_position.x >> temp_position.y;	
+        skeleton1.set_position(temp_position);
 		loadfile.close();
 	}
 };

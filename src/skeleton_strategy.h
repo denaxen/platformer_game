@@ -29,7 +29,7 @@ class Wait : public SkeletonStrategy
 public:
     Wait(Skeleton* skeleton);
 
-    void update(Skeleton* skeleton, Player& player, float dt);
+    virtual void update(Skeleton* skeleton, Player& player, float dt);
 };
 
 class Pursue : public SkeletonStrategy

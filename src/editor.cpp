@@ -26,10 +26,7 @@ int main(int argc, char** argv)
 
 	sf::Font font;
     if (!font.loadFromFile("../consolas.ttf"))
-    {
-        if (!font.loadFromFile("consolas.ttf"))
-            std::cout << "Error, no font named consolas.ttf" << std::endl;
-    }
+        std::cout << "Error, no font named consolas.ttf" << std::endl;
     sf::Text info;
     info.setFont(font);
     info.setFillColor(sf::Color::Black);

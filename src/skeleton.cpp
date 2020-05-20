@@ -31,6 +31,7 @@ Skeleton::Skeleton(sf::Vector2f position)
     }
     sprite.setTexture(texture);
     sprite.setPosition(position);
+    //sprite.setOrigin(.getSize().x, texture.getSize().y);
 
     scale_factor = 3;
     sprite.setScale(scale_factor, scale_factor);

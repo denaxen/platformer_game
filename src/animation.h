@@ -10,6 +10,7 @@ private:
 
 	int number_of_frames;
 	float animation_speed;
+	int current_frame;
 
 	float time;
 
@@ -46,7 +47,8 @@ public:
 
 	void set_sprite(sf::Sprite& sprite, bool is_faced_right)
 	{
-		int current_frame = (int)(animation_speed * time) % number_of_frames;
+		current_frame = (int)(animation_speed * time) % number_of_frames;
+		//texture_rect.setPosition();
 		if (is_faced_right)
 		{
 			texture_rect.left = current_frame * texture_rect.width;
@@ -60,4 +62,6 @@ public:
 			texture_rect.width *= -1;
 		}
 	}
+
+	friend class Attacking;
 };

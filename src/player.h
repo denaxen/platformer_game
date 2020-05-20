@@ -15,6 +15,8 @@ private:
 	sf::Texture texture;
 	sf::Sprite sprite;
 
+	bool is_lose;
+
 	bool is_faced_right;
 	bool on_ground;
 	sf::Vector2f velocity;
@@ -51,4 +53,5 @@ public:
 	friend class Wait;
 	friend class Pursue;
 	friend class Attacking;
+	friend class TileWorld;
 };

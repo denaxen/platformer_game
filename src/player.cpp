@@ -15,7 +15,7 @@ void Player::set_state(PlayerState* new_state)
 	state = new_state;
 }
 
-Player::Player(sf::Vector2f position)
+Player::Player(sf::Vector2f position) : is_lose(false)
 {
 	if (!texture.loadFromFile("../textures/hero.png"))
 	{
