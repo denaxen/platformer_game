@@ -104,7 +104,7 @@ Attacking::Attacking(Skeleton* skeleton)
 
 void Attacking::update(Skeleton* skeleton, Player& player, float dt)
 {
-    if (skeleton->state->animation.current_frame == 17)
+    if (skeleton->state->animation.current_frame == 15)
     {
         player.is_lose = true;
     }

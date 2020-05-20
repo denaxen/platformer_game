@@ -13,6 +13,7 @@
 
 #include "player.h"
 #include "player_states.h"
+#include "item.h"
 
 #include "skeleton.h"
 #include "skeleton_states.h"
@@ -43,6 +44,8 @@ private:
 	std::vector<Tile> decoration_tilegrid;
 
 	Player player;
+
+	Item item;
 
 	sf::Font font;
     sf::Text text;
@@ -77,7 +80,8 @@ public:
 
 	TileWorld(unsigned int num_tiles_x, unsigned int num_tiles_y, bool is_editor_mode) 
 		: num_tiles_x(num_tiles_x), num_tiles_y(num_tiles_y), is_editor_mode(is_editor_mode),
-		  player(Player({0, 0})), view(sf::FloatRect(0, 0, 1200, 900)), time(0), skeleton(Skeleton({0, 0})), skeleton1(Skeleton({0,0})), is_lose(false)
+		  player(Player({0, 0})), view(sf::FloatRect(0, 0, 1200, 900)), time(0), skeleton(Skeleton({0, 0})), skeleton1(Skeleton({0,0})), 
+		  is_lose(false), item(Item({0, 0}))
 	{
 		skeleton1.sprite.setColor({90, 90, 90});
 		//skeleton1.scale_factor = 4;
@@ -299,11 +303,12 @@ public:
 		is_lose = player.is_lose;
 		skeleton.update(player, dt);
 		skeleton1.update(player, dt);
+		item.update(player, dt);
 		player.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
         skeleton.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
 		skeleton1.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
 
-		//cout << player.get_position().x << " " << player.get_position().y << " " << skeleton.get_position().x << " " << skeleton.get_position().y << endl;
+		cout << player.get_position().x << " " << player.get_position().y << " " << skeleton.get_position().x << " " << skeleton.get_position().y << endl;
 	}
 
 	void draw_single_tile(sf::RenderWindow& window, Tile tile, sf::Vector2f position)
@@ -374,6 +379,7 @@ public:
 		player.draw(window);
 		skeleton.draw(window);
 		skeleton1.draw(window);
+		item.draw(window);
 		
 		if (is_lose)
 		{
@@ -397,11 +403,42 @@ public:
     		text.setPosition(600, 450);
     		window.draw(text);*/
 			sleep(0.5);
-			cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
-			cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\YOU DIED////////////////////////////" << endl;
+			cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\YOU LOSE////////////////////////////" << endl;
+			cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Press esc////////////////////////////" << endl;
 			cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Run game again//////////////////////////" << endl;
 			cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
 			cout << "You see this message because program can't draw text on the window \n(method draw() in TileWorld, if(is_lose))" << endl;
+			exit(0);
+		}
+
+		if (item.is_picked)
+		{
+			/*window.clear(sf::Color(20, 31, 47));
+    		if (!font.loadFromFile("../consolas.ttf"))
+        		std::cout << "Error, no font named consolas.ttf" << std::endl;
+			
+			text.setFont(font);
+    		text.setString("You win");
+    		text.setCharacterSize(100);
+    		text.setOrigin(text.getLocalBounds().width / 2, text.getCharacterSize() / 2);
+    		text.setFillColor(sf::Color::White);
+    		text.setPosition(600, 350);
+    		window.draw(text);
+
+    		text.setString("Press esc to exit");
+    		text.setCharacterSize(100);
+    		text.setFont(font);
+    		text.setOrigin(text.getLocalBounds().width / 2, text.getCharacterSize() / 2);
+    		text.setFillColor(sf::Color::Blue);
+    		text.setPosition(600, 450);
+    		window.draw(text);*/
+			sleep(0.5);
+			cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+			cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\YOU WIN/////////////////////////////" << endl;
+			cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Press esc////////////////////////////" << endl;
+			cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Run game again//////////////////////////" << endl;
+			cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+			cout << "You see this message because program can't draw text on the window \n(method draw() in TileWorld, if(item.is_picked))" << endl;
 			exit(0);
 		}
 		
@@ -442,6 +479,7 @@ public:
 		savefile << "Player " << player.get_position().x << " " << player.get_position().y << std::endl;
 		savefile << "Skeleton " << skeleton.get_position().x << " " << skeleton.get_position().y << std::endl;
 		savefile << "Skeleton1 " << skeleton1.get_position().x << " " << skeleton1.get_position().y << std::endl;
+		savefile << "Item " << item.get_position().x << " " << item.get_position().y << std::endl;
 		savefile.close();
 
 	}
@@ -482,6 +520,9 @@ public:
 		loadfile >> temp_name;
 		loadfile >> temp_position.x >> temp_position.y;	
         skeleton1.set_position(temp_position);
+		loadfile >> temp_name;
+		loadfile >> temp_position.x >> temp_position.y;	
+        item.set_position(temp_position);
 		loadfile.close();
 	}
 };

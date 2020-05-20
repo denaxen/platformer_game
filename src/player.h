@@ -54,4 +54,5 @@ public:
 	friend class Pursue;
 	friend class Attacking;
 	friend class TileWorld;
+	friend class Item;
 };

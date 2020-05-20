@@ -13,10 +13,10 @@ include_directories(${SFML_DIR})
 link_directories(${SFML_DIR})
  
 # Создадим исполняемый файл по имени game из исходных файлов
-add_executable(game src/main.cpp src/player.cpp src/player_states.cpp src/skeleton.cpp src/skeleton_states.cpp src/skeleton_strategy.cpp)
+add_executable(game src/main.cpp src/player.cpp src/player_states.cpp src/skeleton.cpp src/skeleton_states.cpp src/skeleton_strategy.cpp src/item.cpp)
 
 # Создадим исполняемый файл по имени editor из исходных файлов
-add_executable(editor src/editor.cpp src/player.cpp src/player_states.cpp src/skeleton.cpp src/skeleton_states.cpp src/skeleton_strategy.cpp)
+add_executable(editor src/editor.cpp src/player.cpp src/player_states.cpp src/skeleton.cpp src/skeleton_states.cpp src/skeleton_strategy.cpp src/item.cpp)
 
 # Подключим статические библиотеки libsfml-graphics.a, libsfml-system.a, libsfml-window.a
 target_link_libraries(game sfml-graphics sfml-window sfml-system)
