@@ -1,24 +1,32 @@
-Компиляция проекта:
+# Project Compilation:
 
-1) В файле CMakeLists.txt измените переменную SFML_DIR - она должна содержать путь до вашей версии SFML
-2) В переменной среды PATH пропишите путь до динамическийх библиотек библиотеки SFML (.dll или .so) 
-3) Если у вас ещё не прописаны пути до cmake и make в переменной среды PATH, то прописать их там тоже
+1) In the `CMakeLists.txt` file, change the `SFML_DIR` variable - it should contain the path to your version of SFML.
+2) In the `PATH` environment variable, specify the path to the SFML library's dynamic libraries (`.dll` or `.so`).
+3) If paths to `cmake` and `make` are not yet specified in your `PATH` environment variable, add them as well.
 
-4) В зависимости от среды:
+4) Depending on your environment:
 
-	A) Linux:
-		Зайдите в терминале в папку build и пропишите команды:
-			cmake ..
-			make
+    A) Linux:
+        - Open the terminal in the `build` directory and enter the commands:
+            ```
+            cmake ..
+            make
+            ```
 
-	B) Windows MinGW
-		Зайдите в терминале в папку build и пропишите команды:
-			cmake -G"MinGW Makefiles" ..
-			mingw32-make.exe
+    B) Windows MinGW
+        - Open the terminal in the `build` directory and enter the commands:
+            ```
+            cmake -G"MinGW Makefiles" ..
+            mingw32-make.exe
+            ```
 
-	C) Windows Visual Studio
-		Зайдите в терминале в папку build и пропишите команды:
-			cmake -G"Visual Studio 16 2019" ..
-		Открыть созданный проект Visual Studio и скомпилировать
-		Если у вас другая версия VS, то можно вызвать help:
-			cmake -h
+    C) Windows Visual Studio
+        - Open the terminal in the `build` directory and enter the commands:
+            ```
+            cmake -G"Visual Studio 16 2019" ..
+            ```
+        - Open the created Visual Studio project and compile.
+        - If you have a different version of Visual Studio, you can call for help:
+            ```
+            cmake -h
+            ```
